@@ -1,0 +1,6 @@
+config_location="/usr/local/opt/openalpr/share/openalpr/config/openalpr.defaults.conf"
+runtime_data="/usr/local/opt/openalpr/share/openalpr/runtime_data/"
+face_cascade="haarcascade_frontalface_default.xml"
+profile_cascade="haarcascade_profileface.xml"
+input_video="short_plate.mp4"
+output_video="output_plate.mov"
