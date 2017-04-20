@@ -8,12 +8,6 @@ import threading
 from threading import Thread
 debug = 0
 result_image = None
-def print_progress(count, total, frame_time, suffix='Processing Frame'):
-    time_left = total*frame_time - count*frame_time
-    m, s = divmod(time_left, 60)
-    h, m = divmod(m, 60)
-    sys.stdout.write('%s [%s of %s] Approx. %sh %sm %ss left\r' % (suffix, count, total, int(h), int(m), int(s)))
-    sys.stdout.flush()
 
 def Init_alpr():
     alpr = Alpr("us", data.config_location, data.runtime_data)
@@ -76,9 +70,6 @@ def Plate_t(frame, alpr, result_image):
         result_image = BlurFramePlates(plate_results, frame, result_image)
 
 def BlurVideo(cap, vout, face_cascade, profile_cascade, alpr, length):
-    i = 0
-    print_progress(i, length, 0)
-    iter_time = time.time()
     while (cap.isOpened()):
         ret, frame = cap.read()
         if frame is not None:
@@ -92,10 +83,6 @@ def BlurVideo(cap, vout, face_cascade, profile_cascade, alpr, length):
             plate_thread.join()
             #vout.write(result_image)
             cv2.imshow('frame', result_image)
-            i+=1
-            if i is 1:
-                frame_time = time.time() - iter_time
-            print_progress(i, length, frame_time)
         else:
             break
         if debug is 1:
