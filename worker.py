@@ -107,7 +107,7 @@ def Cleanup(cap, vout, alpr):
     vout.release()
     cv2.destroyAllWindows()
 
-def main():
+if __name__ == "__main__":
     if debug is 1:
         print "Debug mode is on"
     alpr = Init_alpr()
@@ -118,4 +118,3 @@ def main():
     process_thread.join()
     destroy_thread.start()
     destroy_thread.join()
-main()
