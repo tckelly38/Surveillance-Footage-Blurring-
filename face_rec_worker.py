@@ -1,14 +1,7 @@
-import numpy as np
-import time
 import cv2
-import sys
-from openalpr import Alpr
 import data
-import threading
-from threading import Thread
 import face_recognition as fr
 import os
-
 class Image:
     def __init__(self, encoding, classification, name):
         self.encoding = encoding
@@ -71,6 +64,7 @@ def find_faces(small_frame, encoded_images):
                 text_color = encoded_images[i].text_color
         faces.append(Face(name, color, text_color))
     return faces, face_locations
+
 def drawOnFrame(face_locations, faces, frame):
     for(top, right, bottom, left), face in zip(face_locations, faces):
         #resize frame
@@ -88,7 +82,7 @@ def drawOnFrame(face_locations, faces, frame):
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, face.name, (left + 6, bottom - 6), font, 1.0, face.text_color, 1)
     return frame
-    
+
 def BlurVideo(cap, vout):
     encoded_images = getImageObjects()
     process_frame = True
