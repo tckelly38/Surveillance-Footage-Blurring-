@@ -116,30 +116,3 @@ if __name__ == "__main__":
     cap, vout = Init_cv2()
     BlurVideo(cap, vout)
     Cleanup(cap, vout)
-
-# def recognizeFaces(top, right, bottom, left, face_encoding, encoded_images, frame):
-#     #see if the face is a match for the known faces
-#     match = fr.compare_faces([e.encoding for e in encoded_images], face_encoding)
-#     name = "Unknown"
-#     color = data.black
-#     text_color = data.white
-#     for i in range(len(match)):
-#         if match[i]:
-#             color = encoded_images[i].color
-#             name = encoded_images[i].name
-#             text_color = encoded_images[i].text_color
-#     #resize frame
-#     top*=4
-#     right*=4
-#     bottom*=4
-#     left*=4
-#     if name is "Unknown": # block out face if not in database
-#         cv2.rectangle(frame, (left, top), (right, bottom), data.black, cv2.cv.CV_FILLED)
-#     else: # Draw a box around the face otherwise with name and color classification
-#         cv2.rectangle(frame, (left, top), (right, bottom), color, 3)
-#
-#     # Draw a label with a name below the face
-#     cv2.rectangle(frame, (left, bottom - 35), (right, bottom), color, cv2.cv.CV_FILLED)
-#     font = cv2.FONT_HERSHEY_DUPLEX
-#     cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, text_color, 1)
-#     return frame
