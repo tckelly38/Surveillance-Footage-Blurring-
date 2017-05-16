@@ -4,5 +4,5 @@ Run rec_categorize_faces.py to launch a live video feed that recognizes faces an
 
 ## Examples
 
-![](https://gifs.com/gif/demo-1-mwx3MR)
+![](https://j.gifs.com/mwx3MR.gif)
 
